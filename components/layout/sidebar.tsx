@@ -15,10 +15,10 @@ export function Sidebar() {
   ];
 
   return (
-    <aside className="w-64 bg-slate-900 flex flex-col h-full">
-      <div className="p-6 flex items-center gap-3 border-b border-slate-800">
-        <div className="w-8 h-8 bg-indigo-500 rounded-lg flex items-center justify-center font-bold text-white">C</div>
-        <span className="text-white font-bold text-xl tracking-tight">Ekklesia ERP</span>
+    <aside className="w-64 bg-[#0a192f] text-white flex flex-col h-full border-r border-[#1e2d45]">
+      <div className="p-6 flex items-center gap-3 border-b border-[#1e2d45]">
+        <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white shadow-lg shadow-blue-900/50">E</div>
+        <span className="font-bold text-xl tracking-tight text-white">Ekklesia ERP</span>
       </div>
       <nav className="flex-1 py-6 px-4 space-y-1">
         {navItems.map((item) => {
@@ -27,23 +27,25 @@ export function Sidebar() {
             <Link
               key={item.name}
               href={item.href}
-              className={`flex items-center gap-3 px-3 py-2 rounded-md transition ${
-                pathname === item.href ? "bg-indigo-600 text-white" : "text-slate-400 hover:text-white"
+              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
+                pathname === item.href 
+                    ? "bg-blue-600 hover:bg-blue-700 text-white shadow-md" 
+                    : "text-slate-400 hover:bg-[#112240] hover:text-blue-300"
               }`}
             >
               <Icon className="w-5 h-5" />
-              <span className="font-medium">{item.name}</span>
+              <span className="font-medium text-sm">{item.name}</span>
             </Link>
           );
         })}
       </nav>
-      <div className="p-4 border-t border-slate-800">
-        <div className="bg-slate-800 rounded-lg p-3">
+      <div className="p-4 border-t border-[#1e2d45]">
+        <div className="bg-[#112240] rounded-xl p-4 border border-[#1e2d45]">
           <div className="flex items-center gap-2 mb-2">
-            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">n8n Connection</span>
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+            <span className="text-[10px] text-blue-300 font-bold uppercase tracking-wider">WhatsApp API</span>
           </div>
-          <p className="text-[11px] text-slate-300">WhatsApp API Active (v1.2)</p>
+          <p className="text-xs text-slate-300">Conectado via n8n (v1.2)</p>
         </div>
       </div>
     </aside>

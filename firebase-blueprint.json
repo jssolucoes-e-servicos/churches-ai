@@ -1,0 +1,53 @@
+{
+  "entities": {
+    "Organization": {
+      "title": "Organization",
+      "description": "Church or region entity for multi-tenancy.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string", "enum": ["church", "region"] }
+      },
+      "required": ["id", "name", "type"]
+    },
+    "Member": {
+      "title": "Member",
+      "description": "Church member.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "organizationId": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" }
+      },
+      "required": ["id", "organizationId", "name"]
+    },
+    "Cell": {
+      "title": "CellGroup",
+      "description": "Small growth group / cell.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "organizationId": { "type": "string" },
+        "name": { "type": "string" },
+        "leaderMemberId": { "type": "string" }
+      },
+      "required": ["id", "organizationId", "name"]
+    }
+  },
+  "firestore": {
+    "/organizations/{organizationId}": {
+      "schema": { "$ref": "#/entities/Organization" },
+      "description": "Organization documents."
+    },
+    "/organizations/{organizationId}/members/{memberId}": {
+      "schema": { "$ref": "#/entities/Member" },
+      "description": "Members linked to an organization."
+    },
+    "/organizations/{organizationId}/cells/{cellId}": {
+      "schema": { "$ref": "#/entities/Cell" },
+      "description": "Cells linked to an organization."
+    }
+  }
+}
